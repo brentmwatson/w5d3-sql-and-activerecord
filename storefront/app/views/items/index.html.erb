@@ -1,0 +1,39 @@
+<div class="jumbotron" background-image: "/images/receipts.jpg" ; height:300px;>
+    <h1>CRUD-dy Storefront</h1>
+    <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active">
+            <div class="btn-group btn-lg">
+                <button type="button" class="btn btn-primary btn-lg">
+                    <span class="glyphicon glyphicon-upload" aria-hidden="true" aria-expanded="false">
+                        <%= link_to "", new_item_path %>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-lg" aria-haspopup="true" aria-expanded="false"><%= link_to "New item", new_item_path %>
+                </button>
+            </div>
+    </ul>
+</div>
+<div>
+    <table class="table table-condensed table-striped table-hover">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity Sold</th>
+        </tr>
+        <tbody>
+            <% @items.each do |item|%>
+            <tr>
+                <td><%= item.id%></td>
+                <td><%= item.title%></td>
+                <td><%= item.category%></td>
+                <td><%= item.description%></td>
+                <td><%= number_to_currency(item.price/100.to_f)  %></td>
+                <td><%= item.orders.sum(:quantity)%></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
