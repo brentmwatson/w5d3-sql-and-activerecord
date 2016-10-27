@@ -1,4 +1,36 @@
 # README
+Make the following web endpoints
+`GET / && GET /items`
+- displays a table showing all the existing items
+(with title, description, category,)
+(price [in dollars and cents]),
+(total quantity ordered)
+- a button to create a new one
+
+`GET /items/new`
+- displays a form to create a new item.
+  have fields for title, description, category and price (in cents)
+- POST /items
+  - creates a new item, and once it saves it the database, redirects to the root_url
+
+`GET /items/:id/edit`
+- displays a form to edit an existing item.
+  Have the same fields as the new form, but the values are for that existing item
+`PUT/PATCH /items/:id`
+- Updates the items with that :id and then redirects to the front.
+
+Each item should have:
+- a link/button to edit that particular item.
+- Make it look decent (this is code for bootstrap ... use the bootstrap-sass gem)
+
+Adventure Mode
+
+Order your items on the front page by the total quantity ordered
+Add a validation to your items that they must have a title, a category and a price. If that validation fails, display the errors to the user and redisplay the form.
+
+
+QUERIES IN RUBY
+
 How many users are there?
 `User.count`
 51
@@ -21,6 +53,7 @@ Correct Virginie Mitchell's address to "New York, NY, 10108".
 How much would it cost to buy one of each tool?
 `Item.where('category LIKE ?', '%tool%').sum(:price)`
 46477
+
 
 How many total items did we sell?
 ` Order.sum(:quantity)`
