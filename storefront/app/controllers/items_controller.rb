@@ -10,12 +10,12 @@ class ItemsController < ApplicationController
     end
 
     def create
-        @post = Post.new
-        @post.title = [:title]
-        @post.category = params[:item][:category]
-        @post.description = params[:item][:description]
-        @post.price = params[:item][:price]
-        @post.save
+        @item = item.new
+        @item.title = [:title]
+        @item.category = params[:item][:category]
+        @item.description = params[:item][:description]
+        @item.price = params[:item][:price]
+        @item.save
         redirect_to root_path
     end
 end
